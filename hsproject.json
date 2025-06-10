@@ -1,0 +1,14 @@
+
+{
+  "name": "harmony-hubspot-components",
+  "version": "1.0.0",
+  "description": "Harmony Business Solutions HubSpot CRM Components",
+  "srcDir": "src",
+  "platformVersion": "2025.1",
+  "app": {
+    "displayName": "Harmony CRM Components",
+    "description": "Business intelligence components for HubSpot CRM",
+    "public": false,
+    "appType": "PRIVATE"
+  }
+}

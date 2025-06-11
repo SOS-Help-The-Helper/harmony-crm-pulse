@@ -16,7 +16,7 @@
       "name": "ContactInsights",
       "label": "Contact Insights",
       "description": "Enhanced contact analytics and engagement metrics from Harmony Business Solutions",
-      "file": "ContactInsights.js",
+      "file": "ContactInsights.tsx",
       "objectTypes": ["CONTACT"],
       "type": "card"
     },
@@ -24,7 +24,7 @@
       "name": "DealPipeline", 
       "label": "Deal Pipeline",
       "description": "Deal management with probability scoring and insights",
-      "file": "DealPipeline.js",
+      "file": "DealPipeline.tsx",
       "objectTypes": ["DEAL"],
       "type": "card"
     },
@@ -32,7 +32,7 @@
       "name": "CompanyMetrics",
       "label": "Company Metrics", 
       "description": "Business intelligence and company health metrics",
-      "file": "CompanyMetrics.js",
+      "file": "CompanyMetrics.tsx",
       "objectTypes": ["COMPANY"],
       "type": "card"
     }

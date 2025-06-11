@@ -21,18 +21,15 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    lib: {
-      entry: 'src/index.tsx',
-      name: 'HarmonyHubSpotComponents',
-      fileName: (format) => `harmony-hubspot-components.${format}.js`
-    },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      input: {
+        ContactInsights: 'src/ContactInsights.tsx',
+        DealPipeline: 'src/DealPipeline.tsx',
+        CompanyMetrics: 'src/CompanyMetrics.tsx'
+      },
       output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM'
-        }
+        entryFileNames: '[name].js',
+        format: 'es'
       }
     }
   }

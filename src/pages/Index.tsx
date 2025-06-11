@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { User, TrendingUp, Building, Settings } from 'lucide-react';
-import ContactInsights from '@/components/ContactInsights';
-import DealPipeline from '@/components/DealPipeline';
-import CompanyMetrics from '@/components/CompanyMetrics';
+import ContactInsights from '../ContactInsights';
+import DealPipeline from '../DealPipeline';
+import CompanyMetrics from '../CompanyMetrics';
 
 type TabType = 'contact' | 'deal' | 'company';
 

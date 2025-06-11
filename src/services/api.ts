@@ -1,5 +1,4 @@
-
-import { Contact, Deal, Company, APIResponse } from './types/hubspot';
+import { Contact, Deal, Company, APIResponse } from '../types/hubspot';
 
 const BASE_URL = 'https://viwushnyjfdzaktsdjoo.supabase.co/functions/v1/hubspot';
 

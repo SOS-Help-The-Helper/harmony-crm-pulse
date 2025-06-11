@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { User, Mail, Phone, Building, TrendingUp, DollarSign, Clock, Target } from 'lucide-react';
 import { Contact } from './types/hubspot';
@@ -26,9 +25,12 @@ const ContactInsights: React.FC<ContactInsightsProps> = ({ hs_object_id }) => {
       try {
         setLoading(true);
         setError(null);
+        console.log('Loading contact data for:', hs_object_id);
         const data = await fetchContactData(hs_object_id);
+        console.log('Contact data loaded:', data);
         setContact(data);
       } catch (err) {
+        console.error('Contact loading error:', err);
         setError(err instanceof Error ? err.message : 'Failed to load contact data');
       } finally {
         setLoading(false);

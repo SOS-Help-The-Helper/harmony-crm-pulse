@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { TrendingUp, DollarSign, Calendar, Target, ArrowRight, Percent } from 'lucide-react';
 import { Deal } from './types/hubspot';
@@ -26,9 +25,12 @@ const DealPipeline: React.FC<DealPipelineProps> = ({ hs_object_id }) => {
       try {
         setLoading(true);
         setError(null);
+        console.log('Loading deal data for:', hs_object_id);
         const data = await fetchDealData(hs_object_id);
+        console.log('Deal data loaded:', data);
         setDeal(data);
       } catch (err) {
+        console.error('Deal loading error:', err);
         setError(err instanceof Error ? err.message : 'Failed to load deal data');
       } finally {
         setLoading(false);

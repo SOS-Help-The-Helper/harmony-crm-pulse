@@ -21,15 +21,21 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    rollupOptions: {
-      input: {
+    lib: {
+      entry: {
         ContactInsights: 'src/ContactInsights.tsx',
         DealPipeline: 'src/DealPipeline.tsx',
         CompanyMetrics: 'src/CompanyMetrics.tsx'
       },
+      formats: ['es']
+    },
+    rollupOptions: {
+      external: ['react', 'react-dom'],
       output: {
-        entryFileNames: '[name].js',
-        format: 'es'
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM'
+        }
       }
     }
   }

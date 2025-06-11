@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Building, MapPin, Globe, Users, DollarSign, TrendingUp, Target, Heart } from 'lucide-react';
 import { Company } from './types/hubspot';
@@ -26,9 +25,12 @@ const CompanyMetrics: React.FC<CompanyMetricsProps> = ({ hs_object_id }) => {
       try {
         setLoading(true);
         setError(null);
+        console.log('Loading company data for:', hs_object_id);
         const data = await fetchCompanyData(hs_object_id);
+        console.log('Company data loaded:', data);
         setCompany(data);
       } catch (err) {
+        console.error('Company loading error:', err);
         setError(err instanceof Error ? err.message : 'Failed to load company data');
       } finally {
         setLoading(false);

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { TrendingUp, DollarSign, Calendar, Target, ArrowRight, Percent } from 'lucide-react';
 import { Deal } from '@/types/hubspot';
@@ -6,11 +5,17 @@ import { fetchDealData } from '@/services/api';
 import LoadingSkeleton from './LoadingSkeleton';
 import ErrorMessage from './ErrorMessage';
 
+/**
+ * @hubspot/component
+ * @hubspot/objectTypes DEAL
+ * Deal management with probability scoring and insights
+ */
+
 interface DealPipelineProps {
-  dealId: string;
+  hs_object_id: string;
 }
 
-const DealPipeline: React.FC<DealPipelineProps> = ({ dealId }) => {
+const DealPipeline: React.FC<DealPipelineProps> = ({ hs_object_id }) => {
   const [deal, setDeal] = useState<Deal | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -20,7 +25,7 @@ const DealPipeline: React.FC<DealPipelineProps> = ({ dealId }) => {
       try {
         setLoading(true);
         setError(null);
-        const data = await fetchDealData(dealId);
+        const data = await fetchDealData(hs_object_id);
         setDeal(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load deal data');
@@ -30,7 +35,7 @@ const DealPipeline: React.FC<DealPipelineProps> = ({ dealId }) => {
     };
 
     loadDealData();
-  }, [dealId]);
+  }, [hs_object_id]);
 
   if (loading) {
     return <LoadingSkeleton type="deal" />;

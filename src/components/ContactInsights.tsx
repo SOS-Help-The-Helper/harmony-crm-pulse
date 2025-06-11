@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { User, Mail, Phone, Building, TrendingUp, DollarSign, Clock, Target } from 'lucide-react';
 import { Contact } from '@/types/hubspot';
@@ -6,11 +5,17 @@ import { fetchContactData } from '@/services/api';
 import LoadingSkeleton from './LoadingSkeleton';
 import ErrorMessage from './ErrorMessage';
 
+/**
+ * @hubspot/component
+ * @hubspot/objectTypes CONTACT
+ * Enhanced contact analytics and engagement metrics from Harmony Business Solutions
+ */
+
 interface ContactInsightsProps {
-  contactId: string;
+  hs_object_id: string;
 }
 
-const ContactInsights: React.FC<ContactInsightsProps> = ({ contactId }) => {
+const ContactInsights: React.FC<ContactInsightsProps> = ({ hs_object_id }) => {
   const [contact, setContact] = useState<Contact | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -20,7 +25,7 @@ const ContactInsights: React.FC<ContactInsightsProps> = ({ contactId }) => {
       try {
         setLoading(true);
         setError(null);
-        const data = await fetchContactData(contactId);
+        const data = await fetchContactData(hs_object_id);
         setContact(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load contact data');
@@ -30,7 +35,7 @@ const ContactInsights: React.FC<ContactInsightsProps> = ({ contactId }) => {
     };
 
     loadContactData();
-  }, [contactId]);
+  }, [hs_object_id]);
 
   if (loading) {
     return <LoadingSkeleton type="contact" />;

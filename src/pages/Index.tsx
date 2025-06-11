@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { User, TrendingUp, Building, Settings } from 'lucide-react';
 import ContactInsights from '@/components/ContactInsights';
@@ -57,13 +56,13 @@ const Index = () => {
   const renderActiveComponent = () => {
     switch (activeTab) {
       case 'contact':
-        return <ContactInsights contactId={contactId} />;
+        return <ContactInsights hs_object_id={contactId} />;
       case 'deal':
-        return <DealPipeline dealId={dealId} />;
+        return <DealPipeline hs_object_id={dealId} />;
       case 'company':
-        return <CompanyMetrics companyId={companyId} />;
+        return <CompanyMetrics hs_object_id={companyId} />;
       default:
-        return <ContactInsights contactId={contactId} />;
+        return <ContactInsights hs_object_id={contactId} />;
     }
   };
 

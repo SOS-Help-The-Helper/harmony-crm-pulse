@@ -10,5 +10,31 @@
     "description": "Business intelligence components for HubSpot CRM",
     "public": false,
     "appType": "PRIVATE"
-  }
+  },
+  "components": [
+    {
+      "name": "ContactInsights",
+      "label": "Contact Insights",
+      "description": "Enhanced contact analytics and engagement metrics from Harmony Business Solutions",
+      "file": "ContactInsights.js",
+      "objectTypes": ["CONTACT"],
+      "type": "card"
+    },
+    {
+      "name": "DealPipeline", 
+      "label": "Deal Pipeline",
+      "description": "Deal management with probability scoring and insights",
+      "file": "DealPipeline.js",
+      "objectTypes": ["DEAL"],
+      "type": "card"
+    },
+    {
+      "name": "CompanyMetrics",
+      "label": "Company Metrics", 
+      "description": "Business intelligence and company health metrics",
+      "file": "CompanyMetrics.js",
+      "objectTypes": ["COMPANY"],
+      "type": "card"
+    }
+  ]
 }

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Building, MapPin, Globe, Users, DollarSign, TrendingUp, Target, Heart } from 'lucide-react';
 import { Company } from '@/types/hubspot';
@@ -6,11 +5,17 @@ import { fetchCompanyData } from '@/services/api';
 import LoadingSkeleton from './LoadingSkeleton';
 import ErrorMessage from './ErrorMessage';
 
+/**
+ * @hubspot/component
+ * @hubspot/objectTypes COMPANY
+ * Business intelligence and company health metrics
+ */
+
 interface CompanyMetricsProps {
-  companyId: string;
+  hs_object_id: string;
 }
 
-const CompanyMetrics: React.FC<CompanyMetricsProps> = ({ companyId }) => {
+const CompanyMetrics: React.FC<CompanyMetricsProps> = ({ hs_object_id }) => {
   const [company, setCompany] = useState<Company | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -20,7 +25,7 @@ const CompanyMetrics: React.FC<CompanyMetricsProps> = ({ companyId }) => {
       try {
         setLoading(true);
         setError(null);
-        const data = await fetchCompanyData(companyId);
+        const data = await fetchCompanyData(hs_object_id);
         setCompany(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load company data');
@@ -30,7 +35,7 @@ const CompanyMetrics: React.FC<CompanyMetricsProps> = ({ companyId }) => {
     };
 
     loadCompanyData();
-  }, [companyId]);
+  }, [hs_object_id]);
 
   if (loading) {
     return <LoadingSkeleton type="company" />;
